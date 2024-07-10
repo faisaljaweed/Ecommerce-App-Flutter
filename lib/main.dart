@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:ecommerce/Home.dart'; // Ensure you have this page created
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,15 +31,33 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: const Center(
-          child: Text('Running on:'),
-        ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Image.asset('images/splash-bg.png'),
+          Positioned(
+              top: MediaQuery.of(context).size.height * 0.5,
+              left: MediaQuery.of(context).size.width * 0.13,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Image.asset(
+                  'images/logo.png',
+                  fit: BoxFit.contain,
+                ),
+              ))
+        ],
       ),
     );
   }
