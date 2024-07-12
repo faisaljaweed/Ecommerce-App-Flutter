@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:ecommerce/Home.dart'; // Ensure you have this page created
+import 'package:ecommerce/home_page.dart'; // Ensure you have this page created
 import 'package:flutter/material.dart';
 
 void main() {
