@@ -157,7 +157,9 @@ class CustomBottomSheet extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CartScreen()));
+                        builder: (context) => CartScreen(
+                              product: product,
+                            )));
               },
               child: Container(
                   padding:

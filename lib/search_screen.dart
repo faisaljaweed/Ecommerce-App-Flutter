@@ -1,5 +1,10 @@
 import 'package:ecommerce/home_page.dart';
 import 'package:flutter/material.dart';
+import 'Catergory/dresses.dart';
+import 'Catergory/coat.dart';
+import 'Catergory/bikni.dart';
+import 'Catergory/hats.dart';
+import 'Catergory/tops.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -15,31 +20,36 @@ class _SearchScreenState extends State<SearchScreen> {
       "id": 1,
       "url": "images/categories1.png",
       "heading": "Dresses",
-      "para": "140 Products"
+      "para": "140 Products",
+      "page": const DressesScreen(),
     },
     {
       "id": 2,
       "url": "images/categories2.png",
       "heading": "Coats & Outwear",
-      "para": "54 Products"
+      "para": "54 Products",
+      "page": const CoatScreen(),
     },
     {
       "id": 3,
       "url": "images/categories3.png",
       "heading": "Bikini & Beachwear",
-      "para": "37 Products"
+      "para": "37 Products",
+      "page": const BikneScreen(),
     },
     {
       "id": 4,
       "url": "images/categories4.png",
       "heading": "Tops & T-shirts",
-      "para": "260 Products"
+      "para": "260 Products",
+      "page": const TopsScreen(),
     },
     {
       "id": 5,
       "url": "images/categories5.png",
       "heading": "Hats",
-      "para": "65 Products"
+      "para": "65 Products",
+      "page": const HatsScreen(),
     },
   ];
 
@@ -186,49 +196,55 @@ class _SearchScreenState extends State<SearchScreen> {
                           ),
                         ],
                       ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 140,
-                            height: 140,
-                            child: Image.asset(
-                              e['url'],
-                              fit: BoxFit.contain,
-                              width: double.infinity,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    e['heading'],
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1.5,
-                                    ),
-                                  ),
-                                  Text(
-                                    e['para'],
-                                    style: const TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.grey,
-                                      letterSpacing: 1.2,
-                                    ),
-                                  ),
-                                ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => e['page']));
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 140,
+                              height: 140,
+                              child: Image.asset(
+                                e['url'],
+                                fit: BoxFit.contain,
+                                width: double.infinity,
                               ),
-                            ],
-                          ),
-                          const Icon(Icons.arrow_forward_ios_sharp),
-                        ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      e['heading'],
+                                      style: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.5,
+                                      ),
+                                    ),
+                                    Text(
+                                      e['para'],
+                                      style: const TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.grey,
+                                        letterSpacing: 1.2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const Icon(Icons.arrow_forward_ios_sharp),
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),

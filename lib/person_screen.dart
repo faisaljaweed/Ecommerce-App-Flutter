@@ -11,7 +11,7 @@ class PersonScreen extends StatefulWidget {
 class _PersonScreenState extends State<PersonScreen> {
   String searchQuery = '';
   final FocusNode _focusNode = FocusNode();
-  bool _showSearchBar = false;
+  // bool _showSearchBar = false;
 
   final List<Map<String, String>> products = [
     {
@@ -60,98 +60,100 @@ class _PersonScreenState extends State<PersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final filteredProducts = products
-        .where((product) =>
-            product['title']!.toLowerCase().contains(searchQuery.toLowerCase()))
-        .toList();
+    // final filteredProducts = products
+    //     .where((product) =>
+    //         product['title']!.toLowerCase().contains(searchQuery.toLowerCase()))
+    //     .toList();
 
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          setState(() {
-            _showSearchBar = false;
-            _focusNode.unfocus();
-          });
-        },
-        child: Scrollbar(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-                      const Text(
-                        "Skirts",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _showSearchBar = !_showSearchBar;
-                          });
-                        },
-                        icon: const Icon(Icons.search),
-                      ),
-                    ],
-                  ),
-                  Visibility(
-                    visible: _showSearchBar,
-                    child: TextField(
-                      focusNode: _focusNode,
-                      onChanged: (value) {
-                        setState(() {
-                          searchQuery = value;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        prefixIcon: const Icon(Icons.search),
-                        labelText: 'Search Skirts',
-                      ),
-                    ),
-                  ),
-                  const Text("132 Skirts"),
-                  for (var i = 0; i < filteredProducts.length; i += 2) ...[
-                    Row(
-                      children: [
-                        if (i < filteredProducts.length)
-                          Expanded(
-                            child: Cards(
-                              imagePath: filteredProducts[i]['imagePath']!,
-                              title: filteredProducts[i]['title']!,
-                              size: filteredProducts[i]['size']!,
-                              price: filteredProducts[i]['price']!,
-                            ),
-                          ),
-                        if (i + 1 < filteredProducts.length)
-                          Expanded(
-                            child: Cards(
-                              imagePath: filteredProducts[i + 1]['imagePath']!,
-                              title: filteredProducts[i + 1]['title']!,
-                              size: filteredProducts[i + 1]['size']!,
-                              price: filteredProducts[i + 1]['price']!,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+    return const Center(
+      child: Text('Product Screen'),
     );
+    // body: GestureDetector(
+    //   onTap: () {
+    //     setState(() {
+    //       _showSearchBar = false;
+    //       _focusNode.unfocus();
+    //     });
+    //   },
+    //   child: Scrollbar(
+    //     child: SingleChildScrollView(
+    //       child: Padding(
+    //         padding: const EdgeInsets.all(15.0),
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             const SizedBox(
+    //               height: 30,
+    //             ),
+    //             Row(
+    //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //               children: [
+    //                 IconButton(
+    //                     onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+    //                 const Text(
+    //                   "Skirts",
+    //                   style: TextStyle(
+    //                       fontSize: 20, fontWeight: FontWeight.bold),
+    //                 ),
+    //                 IconButton(
+    //                   onPressed: () {
+    //                     setState(() {
+    //                       _showSearchBar = !_showSearchBar;
+    //                     });
+    //                   },
+    //                   icon: const Icon(Icons.search),
+    //                 ),
+    //               ],
+    //             ),
+    //             Visibility(
+    //               visible: _showSearchBar,
+    //               child: TextField(
+    //                 focusNode: _focusNode,
+    //                 onChanged: (value) {
+    //                   setState(() {
+    //                     searchQuery = value;
+    //                   });
+    //                 },
+    //                 decoration: InputDecoration(
+    //                   border: OutlineInputBorder(
+    //                     borderRadius: BorderRadius.circular(10.0),
+    //                   ),
+    //                   prefixIcon: const Icon(Icons.search),
+    //                   labelText: 'Search Skirts',
+    //                 ),
+    //               ),
+    //             ),
+    //             const Text("132 Skirts"),
+    //             for (var i = 0; i < filteredProducts.length; i += 2) ...[
+    //               Row(
+    //                 children: [
+    //                   if (i < filteredProducts.length)
+    //                     Expanded(
+    //                       child: Cards(
+    //                         imagePath: filteredProducts[i]['imagePath']!,
+    //                         title: filteredProducts[i]['title']!,
+    //                         size: filteredProducts[i]['size']!,
+    //                         price: filteredProducts[i]['price']!,
+    //                       ),
+    //                     ),
+    //                   if (i + 1 < filteredProducts.length)
+    //                     Expanded(
+    //                       child: Cards(
+    //                         imagePath: filteredProducts[i + 1]['imagePath']!,
+    //                         title: filteredProducts[i + 1]['title']!,
+    //                         size: filteredProducts[i + 1]['size']!,
+    //                         price: filteredProducts[i + 1]['price']!,
+    //                       ),
+    //                     ),
+    //                 ],
+    //               ),
+    //             ],
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // ),
+    // );
   }
 }
