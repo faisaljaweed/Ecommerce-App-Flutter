@@ -1,3 +1,4 @@
+import 'package:ecommerce/thanks.dart';
 import 'package:flutter/material.dart';
 
 class HeartScreen extends StatelessWidget {
@@ -156,7 +157,10 @@ class HeartScreen extends StatelessWidget {
                   ),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const Thanks()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                       ),
@@ -186,7 +190,14 @@ class HeartScreen extends StatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Image.asset(""), const Text("\$1599.00")],
+                        children: [
+                          Container(
+                            width: 70,
+                            height: 70,
+                            child: Image.asset("images/Product 1.png"),
+                          ),
+                          const Text("\$1599.00")
+                        ],
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
