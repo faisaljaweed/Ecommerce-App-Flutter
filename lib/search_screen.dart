@@ -65,20 +65,24 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final filteredImages = images.where((image) {
-      return image['heading']
-          .toLowerCase()
-          .contains(_searchQuery.toLowerCase());
-    }).toList();
+    final filteredImages = images.where(
+      (image) {
+        return image['heading'].toLowerCase().contains(
+              _searchQuery.toLowerCase(),
+            );
+      },
+    ).toList();
 
     return Scaffold(
       backgroundColor: const Color(0xffEEEEEE),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
-          setState(() {
-            _showSearchBar = false;
-          });
+          setState(
+            () {
+              _showSearchBar = false;
+            },
+          );
         },
         child: Scrollbar(
           child: SingleChildScrollView(
@@ -94,7 +98,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const HomePage()),
+                              builder: (context) => const HomePage(),
+                            ),
                           );
                         },
                         icon: const Icon(Icons.arrow_back),
@@ -111,10 +116,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         visible: !_showSearchBar,
                         child: IconButton(
                           onPressed: () {
-                            setState(() {
-                              _showSearchBar = !_showSearchBar;
-                              FocusScope.of(context).requestFocus(_focusNode);
-                            });
+                            setState(
+                              () {
+                                _showSearchBar = !_showSearchBar;
+                                FocusScope.of(context).requestFocus(_focusNode);
+                              },
+                            );
                           },
                           icon: const Icon(Icons.search),
                         ),
@@ -128,9 +135,11 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: TextField(
                       focusNode: _focusNode,
                       onChanged: (value) {
-                        setState(() {
-                          _searchQuery = value;
-                        });
+                        setState(
+                          () {
+                            _searchQuery = value;
+                          },
+                        );
                       },
                       decoration: InputDecoration(
                         hintText: 'Search Categories',
@@ -159,8 +168,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(12.0),
+                            ),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey,
@@ -181,73 +191,80 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
                 Column(
-                  children: filteredImages.map((e) {
-                    return Container(
-                      margin: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => e['page']));
-                        },
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 140,
-                              height: 140,
-                              child: Image.asset(
-                                e['url'],
-                                fit: BoxFit.contain,
-                                width: double.infinity,
-                              ),
+                  children: filteredImages.map(
+                    (e) {
+                      return Container(
+                        margin: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      e['heading'],
-                                      style: const TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1.5,
-                                      ),
-                                    ),
-                                    Text(
-                                      e['para'],
-                                      style: const TextStyle(
-                                        fontSize: 14.0,
-                                        color: Colors.grey,
-                                        letterSpacing: 1.2,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const Icon(Icons.arrow_forward_ios_sharp),
                           ],
                         ),
-                      ),
-                    );
-                  }).toList(),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => e['page'],
+                              ),
+                            );
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 140,
+                                height: 140,
+                                child: Image.asset(
+                                  e['url'],
+                                  fit: BoxFit.contain,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        e['heading'],
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                      Text(
+                                        e['para'],
+                                        style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                          letterSpacing: 1.2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const Icon(Icons.arrow_forward_ios_sharp),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
               ],
             ),

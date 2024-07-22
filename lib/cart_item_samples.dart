@@ -17,23 +17,29 @@ class _CartItemSamplesState extends State<CartItemSamples> {
   bool _isChecked = false;
 
   void _toggleCheckbox(bool? value) {
-    setState(() {
-      _isChecked = value!;
-    });
+    setState(
+      () {
+        _isChecked = value!;
+      },
+    );
   }
 
   void _increment() {
-    setState(() {
-      _value++;
-    });
+    setState(
+      () {
+        _value++;
+      },
+    );
   }
 
   void _decrement() {
-    setState(() {
-      if (_value > 1) {
-        _value--;
-      }
-    });
+    setState(
+      () {
+        if (_value > 1) {
+          _value--;
+        }
+      },
+    );
   }
 
   @override
@@ -45,7 +51,9 @@ class _CartItemSamplesState extends State<CartItemSamples> {
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Row(
             children: [
               Checkbox(value: _isChecked, onChanged: _toggleCheckbox),

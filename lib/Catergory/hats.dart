@@ -15,36 +15,42 @@ class _HatsScreenState extends State<HatsScreen> {
 
   final List<Map<String, String>> products = [
     {
+      "id": "1",
       "imagePath": "images/Image (1).png",
       "title": "Polka Dot Shirt",
       "size": "Oversize",
       "price": "\$74.00"
     },
     {
+      "id": "2",
       "imagePath": "images/Image.png",
       "title": "Blazer Jacket",
       "size": "Slim Fit",
       "price": "\$125.00"
     },
     {
+      "id": "3",
       "imagePath": "images/Product 5.png",
       "title": "Pleated skirt",
       "size": "Tight Pleated",
       "price": "\$38.00"
     },
     {
+      "id": "4",
       "imagePath": "images/Product 6.png",
       "title": "Cool Skirt",
       "size": "Jeans",
       "price": "\$42.00"
     },
     {
+      "id": "5",
       "imagePath": "images/Product 3.png",
       "title": "Pencil Skirt",
       "size": "Jeans",
       "price": "\$32.90"
     },
     {
+      "id": "6",
       "imagePath": "images/Product 4.png",
       "title": "Cool Skirt",
       "size": "Jeans",

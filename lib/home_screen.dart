@@ -1,3 +1,6 @@
+import 'package:ecommerce/heart_screen.dart';
+import 'package:ecommerce/search_screen.dart';
+import 'package:ecommerce/thanks.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'Product_card.dart'; // Import the correct file for ProductCard
@@ -25,36 +28,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Map<String, String>> products = [
     {
+      "id": "1",
       "imagePath": "images/Image (1).png",
       "title": "Polka Dot Shirt",
       "size": "Oversize",
       "price": "\$74.00"
     },
     {
+      "id": "2",
       "imagePath": "images/Image.png",
       "title": "Blazer Jacket",
       "size": "Slim Fit",
       "price": "\$125.00"
     },
     {
+      "id": "3",
       "imagePath": "images/Product 5.png",
       "title": "Pleated skirt",
       "size": "Tight Pleated",
       "price": "\$38.00"
     },
     {
+      "id": "4",
       "imagePath": "images/Product 6.png",
       "title": "Cool Skirt",
       "size": "Jeans",
       "price": "\$42.00"
     },
     {
+      "id": "5",
       "imagePath": "images/Product 3.png",
       "title": "Pencil Skirt",
       "size": "Jeans",
       "price": "\$32.90"
     },
     {
+      "id": "6",
       "imagePath": "images/Product 4.png",
       "title": "Cool Skirt",
       "size": "Jeans",
@@ -65,8 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final filteredProducts = products
-        .where((product) =>
-            product['title']!.toLowerCase().contains(searchQuery.toLowerCase()))
+        .where(
+          (product) => product['title']!.toLowerCase().contains(
+                searchQuery.toLowerCase(),
+              ),
+        )
         .toList();
 
     return Scaffold(
@@ -113,25 +125,40 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const HomeScreen())); // Close the drawer
               },
             ),
             ListTile(
               title: const Text('About'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const SearchScreen())); // Close the drawer
               },
             ),
             ListTile(
               title: const Text('Support'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            const HeartScreen())); // Close the drawer
               },
             ),
             ListTile(
               title: const Text('Contact'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const Thanks())); // Close the drawer
               },
             ),
           ],
@@ -163,9 +190,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextField(
                   onChanged: (value) {
-                    setState(() {
-                      searchQuery = value;
-                    });
+                    setState(
+                      () {
+                        searchQuery = value;
+                      },
+                    );
                   },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -181,11 +210,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     InkWell(
                       child: CarouselSlider(
                         items: images
-                            .map((e) => Image.asset(
-                                  e['url']!,
-                                  fit: BoxFit.contain,
-                                  width: double.infinity,
-                                ))
+                            .map(
+                              (e) => Image.asset(
+                                e['url']!,
+                                fit: BoxFit.contain,
+                                width: double.infinity,
+                              ),
+                            )
                             .toList(),
                         carouselController: carouselController,
                         options: CarouselOptions(

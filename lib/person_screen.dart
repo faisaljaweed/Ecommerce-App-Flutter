@@ -13,9 +13,11 @@ class _PersonScreenState extends State<PersonScreen> {
   bool _isChecked = false;
 
   void _toggleCheckbox(bool? value) {
-    setState(() {
-      _isChecked = value!;
-    });
+    setState(
+      () {
+        _isChecked = value!;
+      },
+    );
   }
 
   @override
@@ -38,13 +40,16 @@ class _PersonScreenState extends State<PersonScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => const SearchScreen()));
-                            },
-                            child: const Icon(Icons.arrow_back_ios_new)),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SearchScreen(),
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.arrow_back_ios_new),
+                        ),
                         const Text(
                           "Checkout",
                           style: TextStyle(

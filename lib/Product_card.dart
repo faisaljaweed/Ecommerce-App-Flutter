@@ -19,10 +19,11 @@ class ProductCard extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductScreen(product: product)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductScreen(product: product),
+                      ),
+                    );
                   },
                   child: Image.asset(
                     product['imagePath']!,

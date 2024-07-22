@@ -19,9 +19,9 @@ class Thanks extends StatelessWidget {
             style: TextStyle(color: Colors.black, fontSize: 20),
           ),
           const Text(
-            "Your order is now confirmed and on its way. You'll receive a shipping confirmation email with tracking details shortly. In the meantime, feel free to browse our site for more great products.",
+            "Your order is now confirmed and on its way. You'll\neceive a shipping confirmation email with tracking\ndetails shortly. In the meantime, feel free to browse our site for more great products.",
             style: TextStyle(color: Colors.black, fontSize: 12),
-          )
+          ),
         ],
       ),
     );

@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:ecommerce/home_page.dart'; // Ensure you have this page created
 import 'package:flutter/material.dart';
+import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
-void main() {
+void main() async {
+  await PersistentShoppingCart().init();
   runApp(const MyApp());
 }
 
@@ -33,12 +35,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-    });
+    Timer(
+      const Duration(seconds: 2),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -48,15 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Image.asset('images/splash-bg.png'),
           Positioned(
-              top: MediaQuery.of(context).size.height * 0.5,
-              left: MediaQuery.of(context).size.width * 0.13,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.7,
-                child: Image.asset(
-                  'images/logo.png',
-                  fit: BoxFit.contain,
-                ),
-              ))
+            top: MediaQuery.of(context).size.height * 0.5,
+            left: MediaQuery.of(context).size.width * 0.13,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Image.asset(
+                'images/logo.png',
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
         ],
       ),
     );

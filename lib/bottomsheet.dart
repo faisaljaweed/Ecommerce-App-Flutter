@@ -153,29 +153,33 @@ class CustomBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CartScreen(
-                              product: product,
-                            )));
-              },
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.redAccent,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(
+                    product: product,
                   ),
-                  child: Text(
-                    "Chekout",
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                        color: Colors.white.withOpacity(0.9)),
-                  ))),
+                ),
+              );
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.redAccent,
+              ),
+              child: Text(
+                "Chekout",
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                    color: Colors.white.withOpacity(0.9)),
+              ),
+            ),
+          ),
         ],
       ),
     );
