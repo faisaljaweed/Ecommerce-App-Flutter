@@ -1,11 +1,17 @@
 import 'package:ecommerce/ProductScreen.dart';
 import 'package:flutter/material.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final Map<String, String> product;
 
   const ProductCard({required this.product, super.key});
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool selectedItem = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,12 +27,13 @@ class ProductCard extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductScreen(product: product),
+                        builder: (context) =>
+                            ProductScreen(product: widget.product),
                       ),
                     );
                   },
                   child: Image.asset(
-                    product['imagePath']!,
+                    widget.product['imagePath']!,
                     fit: BoxFit.cover,
                     height: 230,
                   ),
@@ -38,13 +45,20 @@ class ProductCard extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.black.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Icon(
-                        Icons.favorite,
-                        size: 20,
-                        color: Colors.red,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedItem = !selectedItem;
+                          });
+                        },
+                        child: Icon(
+                          Icons.favorite,
+                          size: 20,
+                          color: selectedItem ? Colors.white : Colors.red,
+                        ),
                       ),
                     ),
                   ),
@@ -64,7 +78,7 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product['title']!,
+                  widget.product['title']!,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -72,7 +86,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  product['size']!,
+                  widget.product['size']!,
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
@@ -80,7 +94,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  product['price']!,
+                  widget.product['price']!,
                   style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

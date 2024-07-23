@@ -2,13 +2,28 @@ import 'package:ecommerce/cart_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomBottomSheet extends StatelessWidget {
-  List sizes = ['S', 'M', 'L', 'XL'];
+class CustomBottomSheet extends StatefulWidget {
   final Map<String, String> product;
-  CustomBottomSheet({
+
+  const CustomBottomSheet({
     super.key,
     required this.product,
   });
+
+  @override
+  State<CustomBottomSheet> createState() => _CustomBottomSheetState();
+}
+
+class _CustomBottomSheetState extends State<CustomBottomSheet> {
+  List sizes = ['S', 'M', 'L', 'XL'];
+
+  String? selectedSize;
+  final List<Color> colors = [
+    const Color(0xff031c3c),
+    const Color(0xff3ba48d),
+    Colors.redAccent,
+  ];
+  Color? selectedColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,15 +60,38 @@ class CustomBottomSheet extends StatelessWidget {
                 width: 30,
               ),
               for (int i = 0; i < sizes.length; i++)
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xfff7f8fa),
-                    borderRadius: BorderRadius.circular(30),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedSize = sizes[i];
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xfff7f8fa),
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: selectedSize == sizes[i]
+                            ? Colors.blue
+                            : Colors.transparent,
+                        width: 2,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(sizes[i]),
+                        if (selectedSize == sizes[i])
+                          const Icon(
+                            Icons.check,
+                            color: Colors.blue,
+                            size: 16,
+                          ),
+                      ],
+                    ),
                   ),
-                  child: Text(sizes[i]),
-                )
+                ),
             ],
           ),
           const SizedBox(height: 10),
@@ -64,27 +102,35 @@ class CustomBottomSheet extends StatelessWidget {
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
               ),
               const SizedBox(width: 30),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                padding: const EdgeInsets.all(13),
-                decoration: BoxDecoration(
-                    color: const Color(0xff031c3c),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                padding: const EdgeInsets.all(13),
-                decoration: BoxDecoration(
-                    color: const Color(0xff3ba48d),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                padding: const EdgeInsets.all(13),
-                decoration: BoxDecoration(
-                    color: Colors.redAccent,
-                    borderRadius: BorderRadius.circular(20)),
-              )
+              for (int i = 0; i < colors.length; i++)
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedColor = colors[i];
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.all(13),
+                    decoration: BoxDecoration(
+                      color: colors[i],
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: selectedColor == colors[i]
+                            ? Colors.blue
+                            : Colors.transparent,
+                        width: 2,
+                      ),
+                    ),
+                    child: selectedColor == colors[i]
+                        ? const Icon(
+                            Icons.check,
+                            color: Colors.blue,
+                            size: 20,
+                          )
+                        : null,
+                  ),
+                ),
             ],
           ),
           const SizedBox(
@@ -144,7 +190,7 @@ class CustomBottomSheet extends StatelessWidget {
                 "Total Payment",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              Text(product['price']!,
+              Text(widget.product['price']!,
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
@@ -158,7 +204,7 @@ class CustomBottomSheet extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CartScreen(
-                    product: product,
+                    product: widget.product,
                   ),
                 ),
               );
@@ -169,6 +215,14 @@ class CustomBottomSheet extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.redAccent,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.6),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  )
+                ],
               ),
               child: Text(
                 "Chekout",

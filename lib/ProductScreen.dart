@@ -84,14 +84,24 @@ class ProductScreen extends StatelessWidget {
                         Text(
                           product['title']!,
                           style: const TextStyle(
-                              fontSize: 28, fontWeight: FontWeight.bold),
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 3.0,
+                                color: Color.fromARGB(128, 0, 0, 0),
+                              ),
+                            ],
+                          ),
                         ),
                         Text(
                           product['price']!,
                           style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red.withOpacity(0.7)),
+                            fontSize: 25,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.red.withOpacity(0.7),
+                          ),
                         ),
                       ],
                     ),
@@ -114,7 +124,7 @@ class ProductScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                       "Long Description of the product hereLong Description of the product here Long Description of the product here Long Description of the product here",
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
+                      style: TextStyle(fontSize: 18, color: Colors.black)),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,6 +162,14 @@ class ProductScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: const Color(0xfffd7251),
                             borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.6),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              )
+                            ],
                           ),
                           child: Text(
                             "Buy Now",

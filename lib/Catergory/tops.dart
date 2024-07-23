@@ -138,23 +138,48 @@ class _TopsScreenState extends State<TopsScreen> {
                       crossAxisCount: 2,
                       childAspectRatio:
                           (MediaQuery.of(context).size.width - 30 - 15) /
-                              (2 * 350),
+                              (2 * 330),
                       mainAxisSpacing: 45,
                       crossAxisSpacing: 15,
                     ),
                     itemCount: filteredProducts.length,
                     itemBuilder: (_, i) {
-                      if (i % 2 == 0) {
-                        return ProductCard(product: filteredProducts[i]);
-                      }
-                      return OverflowBox(
-                        maxHeight: 350.0 + 70.0,
-                        child: Container(
-                          margin: const EdgeInsets.only(top: 70),
+                      Widget productCard = Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.white, // Set your desired background color
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(
+                              10), // Optional: adds rounded corners
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: ProductCard(product: filteredProducts[i]),
                         ),
                       );
+
+                      if (i % 2 == 0) {
+                        return productCard;
+                      }
+                      return OverflowBox(
+                        maxHeight: 330.0 + 70.0,
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 70),
+                          child: productCard,
+                        ),
+                      );
                     },
+                  ),
+                  SizedBox(
+                    height: 45,
                   )
                 ],
               ),

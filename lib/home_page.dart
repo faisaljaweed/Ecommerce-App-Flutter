@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
+    const HeartScreen(),
     const SearchScreen(),
     const PersonScreen(),
-    const HeartScreen(),
   ];
 
   @override
