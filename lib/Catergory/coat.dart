@@ -72,6 +72,7 @@ class _CoatScreenState extends State<CoatScreen> {
         .toList();
 
     return Scaffold(
+      backgroundColor: const Color(0xfffdfdfd),
       body: GestureDetector(
         onTap: () {
           setState(() {
@@ -96,7 +97,10 @@ class _CoatScreenState extends State<CoatScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: const Icon(Icons.arrow_back)),
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                          )),
                       const Text(
                         "Coats & Outwear",
                         style: TextStyle(
@@ -108,7 +112,10 @@ class _CoatScreenState extends State<CoatScreen> {
                             _showSearchBar = !_showSearchBar;
                           });
                         },
-                        icon: const Icon(Icons.search),
+                        icon: const Icon(
+                          Icons.search,
+                          size: 30,
+                        ),
                       ),
                     ],
                   ),
@@ -130,7 +137,8 @@ class _CoatScreenState extends State<CoatScreen> {
                       ),
                     ),
                   ),
-                  const Text("132 Skirts"),
+                  const Text("132 Skirts",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -161,7 +169,7 @@ class _CoatScreenState extends State<CoatScreen> {
                               10), // Optional: adds rounded corners
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: ProductCard(product: filteredProducts[i]),
                         ),
                       );

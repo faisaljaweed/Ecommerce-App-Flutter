@@ -72,6 +72,7 @@ class _BikneScreenState extends State<BikneScreen> {
         .toList();
 
     return Scaffold(
+      backgroundColor: const Color(0xfffdfdfd),
       body: GestureDetector(
         onTap: () {
           setState(() {
@@ -96,7 +97,10 @@ class _BikneScreenState extends State<BikneScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: const Icon(Icons.arrow_back)),
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                          )),
                       const Text(
                         "Bikini & Beachwear",
                         style: TextStyle(
@@ -108,7 +112,10 @@ class _BikneScreenState extends State<BikneScreen> {
                             _showSearchBar = !_showSearchBar;
                           });
                         },
-                        icon: const Icon(Icons.search),
+                        icon: const Icon(
+                          Icons.search,
+                          size: 30,
+                        ),
                       ),
                     ],
                   ),
@@ -130,7 +137,10 @@ class _BikneScreenState extends State<BikneScreen> {
                       ),
                     ),
                   ),
-                  const Text("132 Skirts"),
+                  const Text(
+                    "132 Skirts",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                   GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -161,7 +171,7 @@ class _BikneScreenState extends State<BikneScreen> {
                               10), // Optional: adds rounded corners
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: ProductCard(product: filteredProducts[i]),
                         ),
                       );

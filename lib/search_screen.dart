@@ -74,7 +74,7 @@ class _SearchScreenState extends State<SearchScreen> {
     ).toList();
 
     return Scaffold(
-      backgroundColor: const Color(0xffEEEEEE),
+      backgroundColor: const Color(0xfffdfdfd),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -102,7 +102,10 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           );
                         },
-                        icon: const Icon(Icons.arrow_back),
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          size: 30.0,
+                        ),
                       ),
                       const Text(
                         'Categories',
@@ -110,7 +113,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25.0,
-                            letterSpacing: 1.5),
+                            letterSpacing: 2),
                       ),
                       Visibility(
                         visible: !_showSearchBar,
@@ -123,7 +126,10 @@ class _SearchScreenState extends State<SearchScreen> {
                               },
                             );
                           },
-                          icon: const Icon(Icons.search),
+                          icon: const Icon(
+                            Icons.search,
+                            size: 30.0,
+                          ),
                         ),
                       ),
                     ],
@@ -159,7 +165,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         "Dresses",
                         style: TextStyle(
                           fontSize: 20.0,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2,
                         ),
                       ),
                       SizedBox(
@@ -184,7 +191,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         "Hats",
                         style: TextStyle(
                           fontSize: 20.0,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2,
                         ),
                       ),
                     ],
@@ -196,15 +204,15 @@ class _SearchScreenState extends State<SearchScreen> {
                       return Container(
                         margin: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: const Color(0xfff5f5f5),
                           borderRadius: BorderRadius.circular(12.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
+                          boxShadow: const [
+                            // BoxShadow(
+                            //   color: Colors.grey.withOpacity(0.1),
+                            //   spreadRadius: 2,
+                            //   blurRadius: 5,
+                            //   offset: const Offset(0, 3),
+                            // ),
                           ],
                         ),
                         child: InkWell(
@@ -241,7 +249,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                       style: const TextStyle(
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold,
-                                        letterSpacing: 1.5,
+                                        letterSpacing: 3.0,
+                                        fontFamily: 'Pacifico',
                                       ),
                                     ),
                                     const SizedBox(
@@ -252,7 +261,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                       style: const TextStyle(
                                         fontSize: 14.0,
                                         color: Colors.grey,
-                                        letterSpacing: 1.2,
+                                        letterSpacing: 3.0,
+                                        fontFamily: 'Pacifico',
                                       ),
                                     ),
                                   ],

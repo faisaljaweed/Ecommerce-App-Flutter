@@ -71,7 +71,7 @@ class _ProductCardState extends State<ProductCard> {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 5),
+          padding: const EdgeInsets.only(left: 8.0),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Column(

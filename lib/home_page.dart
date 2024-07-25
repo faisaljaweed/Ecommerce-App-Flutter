@@ -45,19 +45,31 @@ class _HomePageState extends State<HomePage> {
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border),
+                icon: Icon(
+                  Icons.home,
+                  size: 35.0,
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag),
+                icon: Icon(
+                  Icons.favorite_border,
+                  size: 35.0,
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(
+                  Icons.shopping_bag,
+                  size: 35.0,
+                ),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  size: 35.0,
+                ),
                 label: '',
               ),
             ],

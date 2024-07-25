@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   Color textColor = Colors.black;
 
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     final filteredProducts = products
@@ -85,14 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
         )
         .toList();
 
-    @override
-    void dispose() {
-      _focusNode.dispose();
-      super.dispose();
-    }
-
     return Scaffold(
-      backgroundColor: const Color(0xffEEEEEE),
+      backgroundColor: const Color(0xfffdfdfd),
       appBar: AppBar(
         title: const Center(
           child: Text(
@@ -275,27 +269,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 5,
                   ),
-                  TextField(
-                    focusNode: _focusNode,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          searchQuery = value;
+                  Center(
+                    child: Container(
+                      color: const Color(0xfff5f5f5),
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: TextField(
+                        focusNode: _focusNode,
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              searchQuery = value;
+                            },
+                          );
                         },
-                      );
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                                width: 3, color: Color(0xfff5f5f5)),
+                          ),
+                          prefixIcon: const Icon(Icons.search),
+                          labelText: 'Search Products',
+                          suffixIcon: const Icon(Icons.camera_alt_outlined),
+                        ),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.black),
-                      ),
-                      prefixIcon: const Icon(Icons.search),
-                      labelText: 'Search Products',
-                      suffixIcon: const Icon(Icons.camera_alt_outlined),
                     ),
                   ),
                   Stack(
@@ -327,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       "New Arrivals",
                       style: TextStyle(
-                        fontFamily: 'Pacifico',
+                        // fontFamily: 'Pacifico',
                         fontSize: 35,
                         fontWeight: FontWeight.w900,
                         letterSpacing: 2,
@@ -374,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               10), // Optional: adds rounded corners
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(0),
                           child: ProductCard(product: filteredProducts[i]),
                         ),
                       );

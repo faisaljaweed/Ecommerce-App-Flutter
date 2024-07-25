@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class HeartScreen extends StatelessWidget {
   const HeartScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +37,9 @@ class HeartScreen extends StatelessWidget {
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 132.0),
+                          vertical: 15.0,
+                          horizontal: 132.0,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(4.0),
@@ -244,7 +245,7 @@ class HeartScreen extends StatelessWidget {
                         ],
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
