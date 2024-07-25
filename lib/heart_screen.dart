@@ -175,15 +175,33 @@ class HeartScreen extends StatelessWidget {
                   ),
                   const Row(
                     children: [
-                      Text("Refund Policy"),
-                      SizedBox(
-                        width: 10,
+                      Text(
+                        "Refund Policy",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      Text("Privacy Policy"),
                       SizedBox(
-                        width: 10,
+                        width: 14,
                       ),
-                      Text("Contact Information"),
+                      Text(
+                        "Privacy Policy",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 14,
+                      ),
+                      Text(
+                        "Contact Information",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   Column(
@@ -191,7 +209,7 @@ class HeartScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 70,
                             height: 70,
                             child: Image.asset("images/Product 1.png"),
@@ -202,14 +220,26 @@ class HeartScreen extends StatelessWidget {
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Shipping \nSubtotal"),
+                          Text(
+                            "Shipping \nSubtotal",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Text("\$400.00"),
                         ],
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Total"),
+                          Text(
+                            "Total",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Text("\$1599.00"),
                         ],
                       ),

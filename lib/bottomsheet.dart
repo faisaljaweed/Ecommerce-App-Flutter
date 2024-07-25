@@ -149,7 +149,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: const Color(0xff),
+                  // color: const Color(0xff),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Icon(

@@ -41,7 +41,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
                     },
                     child: Container(
                       padding: const EdgeInsets.all(10),

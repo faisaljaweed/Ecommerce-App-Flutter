@@ -150,11 +150,11 @@ class _HatsScreenState extends State<HatsScreen> {
                               Colors.white, // Set your desired background color
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: Colors.grey.withOpacity(0.1),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                           borderRadius: BorderRadius.circular(
@@ -178,7 +178,7 @@ class _HatsScreenState extends State<HatsScreen> {
                       );
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   )
                 ],

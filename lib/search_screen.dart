@@ -218,8 +218,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           },
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              // Left side: Image and Text
                               SizedBox(
                                 width: 140,
                                 height: 140,
@@ -229,35 +229,36 @@ class _SearchScreenState extends State<SearchScreen> {
                                   width: double.infinity,
                                 ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        e['heading'],
-                                        style: const TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 1.5,
-                                        ),
+                              const SizedBox(
+                                  width:
+                                      16), // Optional spacing between image and text
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      e['heading'],
+                                      style: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.5,
                                       ),
-                                      Text(
-                                        e['para'],
-                                        style: const TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.grey,
-                                          letterSpacing: 1.2,
-                                        ),
+                                    ),
+                                    const SizedBox(
+                                        height:
+                                            8), // Optional spacing between heading and paragraph
+                                    Text(
+                                      e['para'],
+                                      style: const TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.grey,
+                                        letterSpacing: 1.2,
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                  ],
+                                ),
                               ),
+                              // Right side: Icon
                               const Icon(Icons.arrow_forward_ios_sharp),
                             ],
                           ),

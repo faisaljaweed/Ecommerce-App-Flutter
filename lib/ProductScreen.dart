@@ -3,13 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   final Map<String, String> product;
   const ProductScreen({
     super.key,
     required this.product,
   });
 
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +29,7 @@ class ProductScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
-                    image: AssetImage(product['imagePath']!),
+                    image: AssetImage(widget.product['imagePath']!),
                     fit: BoxFit.cover),
               ),
               child: Padding(
@@ -49,18 +55,25 @@ class ProductScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.black.withOpacity(0.7),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: const Icon(
-                          Icons.favorite,
-                          size: 22,
-                          color: Colors.red,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSelected = !isSelected;
+                            });
+                          },
+                          child: Icon(
+                            Icons.favorite,
+                            size: 22,
+                            color: isSelected ? Colors.white : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -82,7 +95,7 @@ class ProductScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          product['title']!,
+                          widget.product['title']!,
                           style: const TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -96,7 +109,7 @@ class ProductScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          product['price']!,
+                          widget.product['price']!,
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w900,
@@ -124,17 +137,28 @@ class ProductScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                       "Long Description of the product hereLong Description of the product here Long Description of the product here Long Description of the product here",
-                      style: TextStyle(fontSize: 18, color: Colors.black)),
+                      style: TextStyle(
+                          fontSize: 15, color: Colors.black, letterSpacing: 2)),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return CustomBottomSheet(
+                                product: widget.product,
+                              );
+                            },
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(18),
                           decoration: BoxDecoration(
-                            color: const Color(0xfff7f8fa),
+                            color: Colors.black.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: const Icon(
@@ -151,7 +175,7 @@ class ProductScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return CustomBottomSheet(
-                                product: product,
+                                product: widget.product,
                               );
                             },
                           );
@@ -185,7 +209,7 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

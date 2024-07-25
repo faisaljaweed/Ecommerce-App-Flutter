@@ -45,7 +45,7 @@ class _CartItemSamplesState extends State<CartItemSamples> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffE5E5E5),
+      color: const Color(0xffE5E5E5),
       child: Column(
         children: [
           Container(
@@ -119,7 +119,7 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: const Color(0xff),
+                              // color: const Color(0xff),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: InkWell(
